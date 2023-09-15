@@ -7,5 +7,5 @@ services:
       - ./:/app
     ports:
       - 3026:3026
-    environment:
-      NODE_ENV: development # Define a variável de ambiente NODE_ENV como 'development'
+    # environment:
+    #   NODE_ENV: development # Define a variável de ambiente NODE_ENV como 'development'
