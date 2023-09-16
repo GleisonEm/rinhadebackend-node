@@ -1,11 +1,21 @@
-// export const connection = require('knex')({
-//     client: 'pg',
-//     version: '7.2',
-//     connection: {
-//         host: '127.0.0.1',
-//         port: 5432,
-//         user: 'your_database_user',
-//         password: 'your_database_password',
-//         database: 'myapp_test'
-//     }
-// });
+import knex from 'knex';
+import { Model } from 'objection';
+
+const db = knex({
+    client: 'pg',
+    connection: {
+        host: 'db',
+        port: 5432,
+        user: 'postgres',
+        password: 'postgres',
+        database: 'rinhadebackend',
+    },
+});
+
+Model.knex(db);
+
+export class Pessoa extends Model {
+    static get tableName() {
+        return 'pessoas';
+    }
+}

@@ -7,10 +7,6 @@ services:
         limits:
           cpus: "0.75"
           memory: "1.5GB"
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./postgresql.conf:/docker-entrypoint-initdb.d/postgresql.conf
-    command: postgres -c config_file=/docker-entrypoint-initdb.d/postgresql.conf
     environment:
       PGUSER: postgres
       POSTGRES_USER: postgres
@@ -37,6 +33,7 @@ services:
   api1: # API - Instância 01
     image: gleisin/node-web-app:latest
     hostname: api1
+    restart: always
     # command: bash -c "npm run knex"
     depends_on:
       - db
